@@ -1,5 +1,5 @@
 # Container image that runs your code
-FROM php:8.0-alpine
+FROM php:8.1-alpine
 
 RUN apk add --no-cache tini git openssh-client
 
@@ -7,11 +7,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 RUN COMPOSER_ALLOW_SUPERUSER=1 \
     COMPOSER_HOME="/composer" \
-    composer global config minimum-stability dev
-
-RUN COMPOSER_ALLOW_SUPERUSER=1 \
-    COMPOSER_HOME="/composer" \
-    composer global require symplify/easy-coding-standard:^10.3 --prefer-dist --no-progress --dev
+    composer global require symplify/easy-coding-standard:^10.2.4 --prefer-dist --no-progress --dev
 
 ENV PATH /composer/vendor/bin:${PATH}
 
