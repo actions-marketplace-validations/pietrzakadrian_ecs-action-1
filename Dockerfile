@@ -1,5 +1,5 @@
 # Container image that runs your code
-FROM php:8.1-alpine
+FROM php:8.0-alpine
 
 RUN apk add --no-cache tini git openssh-client
 
